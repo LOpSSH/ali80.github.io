@@ -184,4 +184,4 @@ dns_cloudflare_api_key = Global API Key
 
 
 ## References
-[^1]: And here is the definition.
+[^1]: And here is the definition...
