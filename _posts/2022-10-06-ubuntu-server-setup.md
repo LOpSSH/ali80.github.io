@@ -118,7 +118,7 @@ source $ZSH/oh-my-zsh.sh
 ```
 {:file=".zshrc" }
 
-### setup nginx
+## setup nginx
 ```bash
 # enable firewall
 sudo ufw enable
@@ -180,8 +180,94 @@ dns_cloudflare_api_key = Global API Key
 ```
 > Obtain your Global API key here: https://dash.cloudflare.com/profile/api-tokens
 {: .prompt-tip }
+Once this is complete, create your SSL cert directory. Run as root:
+```bash
+sudo mkdir -pv /etc/nginx/ssl/cloudflare/
+```
 
+### setup letsencrypt for nginx
+Long story short, run as root:
+```bash
+sudo certbot certonly --dns-cloudflare --dns-cloudflare-credentials /home/user/.secrets/cloudflare.ini
+# OR
+# reference: https://certbot.eff.org/instructions?ws=nginx&os=ubuntufocal
+sudo certbot --nginx  # other method !
+```
 
+## install docker
+```bash
+# convinient script
+ curl -fsSL https://get.docker.com -o get-docker.sh &&  sudo sh get-docker.sh
+# recommended official method https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository
+sudo apt-get update
+sudo apt-get install \
+    ca-certificates \
+    curl \
+    gnupg \
+    lsb-release
 
+sudo mkdir -p /etc/apt/keyrings
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+# OR
+wget https://download.docker.com/linux/ubuntu/gpg
+cat gpg | | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+
+echo \
+"deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+$(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+sudo apt-get update
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+
+sudo service docker start
+sudo docker run hello-world
+```
+### after installation
+```bash
+sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker
+docker run hello-world
+reboot # if error
+```
+### bypassing  sanctions
+#### add proxy
+```bash
+sudo vim /etc/apt/apt.conf
+# add this line (DO NOT do this, bad proxy)
+Acquire::http::Proxy "http://Proxy.Docker.ir:5555";
+
+```
+#### use docker.ir
+```bash
+# open
+sudo vim /etc/docker/daemon.json
+# add
+{
+    "registry-mirrors": ["https://registry.docker.ir"]
+}
+# restart service
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+```
+
+## run portainer
+```bash
+docker volume create portainer_data
+docker run -d -p 8000:8000 -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
+```
+## setup vpn
+```bash
+https://github.com/Nyr/wireguard-install
+```
+[wiregaurd over tls](https://www.youtube.com/watch?v=HwYIrpOr1j0)
+
+## local http server
+```bash
+ruby -run -ehttpd . -p8000
+php -S 127.0.0.1:8000
+```
+[ref](https://gist.github.com/willurd/5720255)
 ## References
 [^1]: And here is the definition...
