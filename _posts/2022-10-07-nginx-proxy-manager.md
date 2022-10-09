@@ -16,6 +16,12 @@ complete @ikomhoog answer, thanks to @ikomhoog . 👍
 3. then in advance section add these lines:
 
 ```bash
+location / {
+    root  /mnt/user/appdata/NginxProxyManager/pouyaio;
+}
+```
+or this whichc is not working properly
+```bash
 root /mnt/user/appdata/NginxProxyManager/websites;
 index index.html;
 location / {
