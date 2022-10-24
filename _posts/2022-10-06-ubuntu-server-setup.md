@@ -2,6 +2,8 @@
 layout: post
 title: Ubuntu Server Setup
 date: 2022-10-06 19:00 +0330
+tags: [linux, server]
+categories: [linux]
 ---
 ref: https://gist.github.com/bradtraversy/b8b72581ddc940e0a41e0bc09172d91b
 

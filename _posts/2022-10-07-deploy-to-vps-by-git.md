@@ -2,6 +2,8 @@
 layout: post
 title: Deploy to VPS by Git
 date: 2022-10-07 03:56 +0330
+tags: [server, git]
+categories: []
 ---
 
 ## setup remote
