@@ -37,12 +37,14 @@ tags: [TAG]     # TAG names should always be lowercase
  The posts’ layout has been set to post by default, so there is no need to add the variable layout in the Front Matter block.
 
 #### other options
- ```yaml
+```yaml
+premalink: /my-url/dir1/welcome
+premalink: /:categories/:year/:month/:day/:title
 pin: true # pin posts
 toc: false
 math: true
 mermaid: true
- ```
+```
 
 ### Prompts
 ```md
