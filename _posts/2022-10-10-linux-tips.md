@@ -23,3 +23,15 @@ wget -O speedtest-cli https://raw.githubusercontent.com/sivel/speedtest-cli/mast
 ./speedtest-cli --list
 ./speedtest-cli --server SERVER_ID
 ```
+
+
+## search for files
+```bash
+# using ripgrep
+rg --files | rg file_name
+# OR
+alias rgf='rg --files | rg'
+rg file_name
+# OR
+ls -R | grep file_name
+```
