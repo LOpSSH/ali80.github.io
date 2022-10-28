@@ -25,4 +25,5 @@ scp alpine.tar ali@server:/home/ali
 [reference](https://stackoverflow.com/questions/24319662/from-inside-of-a-docker-container-how-do-i-connect-to-the-localhost-of-the-mach)
 you can use `domain name` or `server ip` to access localhost.
 
-<img src="/assets/nginx-access-local-from-container.png">
+<img src="/assets/nginx-access-local-from-container.png" width=500>
+_Image Caption_
