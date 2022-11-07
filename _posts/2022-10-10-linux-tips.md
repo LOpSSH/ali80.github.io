@@ -35,3 +35,10 @@ rg file_name
 # OR
 ls -R | grep file_name
 ```
+
+
+## netstat
+### show used ports
+```bash
+netstat -plnt
+```

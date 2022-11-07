@@ -27,3 +27,25 @@ you can use `domain name` or `server ip` to access localhost.
 
 <img src="/assets/nginx-access-local-from-container.png" width=500>
 _Image Caption_
+
+## link multiple docker-compose services via network
+[ref](https://tjtelan.com/blog/how-to-link-multiple-docker-compose-via-network)
+create custom network to share between containers
+```bash
+docker network create sharednet
+```
+set it as `default external` network  
+```yaml
+version: '3' 
+services: 
+  service1: 
+    image: busybox 
+    container_name: busybee1
+    command: sleep infinity 
+
+networks: 
+  default: 
+    external: true 
+    name: sharednet 
+```
+{:file="docker-compose.yaml"}
