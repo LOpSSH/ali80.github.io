@@ -69,3 +69,30 @@ Future<Tuple2<String, int>> dialogMultiChoice(List<String> msgs) {
   );
 }
 ```
+## list extension
+```dart
+extension Iterables<E> on Iterable<E> {
+  Map<K, List<E>> groupBy<K>(K Function(E) keyFunction) => fold(
+      <K, List<E>>{},
+      (Map<K, List<E>> map, E element) =>
+          map..putIfAbsent(keyFunction(element), () => <E>[]).add(element));
+
+  Iterable<E> diff(Iterable<E> others, {bool Function(E, E)? comparator}) {
+    return this.where((t) => !others.any(((o) => comparator != null ? comparator(o, t) : o == t)));
+  }
+}
+
+extension MyCustomList<E> on List<E> {
+  void upsert(E value, {bool Function(E item)? delegate}) {
+    if (delegate == null) delegate = (item) => item == value;
+    final ind = this.indexWhere((element) => delegate!(element));
+    if (ind < 0)
+      this.add(value);
+    else
+      this[ind] = value;
+  }
+}
+
+
+```
+{:file="list_extensions.dart"}
