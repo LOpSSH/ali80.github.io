@@ -32,20 +32,31 @@ _Image Caption_
 [ref](https://tjtelan.com/blog/how-to-link-multiple-docker-compose-via-network)
 create custom network to share between containers
 ```bash
-docker network create sharednet
+docker network create shared
 ```
-set it as `default external` network  
+set it as `default external` network
 ```yaml
-version: '3' 
-services: 
-  service1: 
-    image: busybox 
+version: '3'
+services:
+  service1:
+    image: busybox
     container_name: busybee1
-    command: sleep infinity 
+    command: sleep infinity
 
-networks: 
-  default: 
-    external: true 
-    name: sharednet 
+networks:
+  default:
+    external: true
+    name: shared
 ```
-{:file="docker-compose.yaml"}
+
+## attach to running container
+```bash
+docker attach nodejs
+# or for mac
+docker attach --sig-proxy=false nodejs
+```
+
+## check docker stats
+```bash
+docker stats container_name
+```

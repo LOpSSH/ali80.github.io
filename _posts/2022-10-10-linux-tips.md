@@ -41,4 +41,6 @@ ls -R | grep file_name
 ### show used ports
 ```bash
 netstat -plnt
+# OR
+ss -tulpn
 ```
