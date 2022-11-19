@@ -270,12 +270,13 @@ https://github.com/Nyr/wireguard-install
 ruby -run -ehttpd . -p8000
 php -S 127.0.0.1:8000
 ```
-
+[ref](https://gist.github.com/willurd/5720255)
 ## enable swap
 ```bash
 sudo fallocate -l 2G /swapfile
 sudo chmod 600 /swapfile
 sudo mkswap /swapfile
+sudo swapon /swapfile
 sudo swapon --show
 
 # Make the Swap File Permanent
@@ -288,6 +289,6 @@ cat /proc/sys/vm/swappiness
 ### swap pressure
 cat /proc/sys/vm/vfs_cache_pressure
 
-[ref](https://gist.github.com/willurd/5720255)
+
 ## References
 [^1]: And here is the definition...
