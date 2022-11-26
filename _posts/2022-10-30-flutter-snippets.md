@@ -40,6 +40,34 @@ Future<bool> dialogConfirmation(String msg, {bool isDestructiveAction = true}) {
     ),
   );
 }
+
+/// cupertino style info dialog
+static infoDialog(String msg) async {
+  await showCupertinoDialog<String>(
+      context: Get.context,
+      builder: (context) => CupertinoAlertDialog(
+            title: Text(msg),
+            actions: [
+              CupertinoDialogAction(
+                  child: Text("OK"),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  }),
+            ],
+          ));
+}
+
+/// cupertino style custom dialog
+static customDialog(String msg, List<Map<String, dynamic>> actions) async {
+  await showCupertinoDialog<String>(
+      context: Get.context,
+      builder: (context) => CupertinoAlertDialog(
+        title: Text(msg),
+        actions: actions.map((e) => CupertinoDialogAction(
+              child: Text(e["title"]),
+              onPressed: e["onPressed"])).toList()
+      ));
+}
 ```
 
 ### multi choice

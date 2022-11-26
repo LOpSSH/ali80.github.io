@@ -35,6 +35,20 @@ rg file_name
 # OR
 ls -R | grep file_name
 ```
+restrict to certain file types
+```bash
+rg 'nodejs' *.ts
+```
+
+show multiple lines
+```bash
+# context: before and after
+rg string -C5
+# before
+rg string -B5
+#after
+rg string -A5
+```
 
 
 ## netstat

@@ -133,6 +133,10 @@ sudo ufw allow https (Port 443)
 # check firewall status
 sudo ufw status
 
+# remove ufw
+sudo ufw status numbered
+sudo ufw delete 2
+
 # FIX ufw firewall issue with docker from below link!
 # https://github.com/chaifeng/ufw-docker#solving-ufw-and-docker-issues
 ```
