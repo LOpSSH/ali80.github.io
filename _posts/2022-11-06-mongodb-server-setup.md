@@ -65,7 +65,25 @@ db.createUser(
 # if you have already created the admin user, you can change the role like this:
 use admin;
 db.grantRolesToUser('admin', [{ role: 'root', db: 'admin' }])
-
+db.updateUser("admin", {pwd: "newpassowrd"})
+```
+## check current users
+```bash
+db.getUsers()
+# result
+{
+  users: [
+    {
+      _id: 'admin.root',
+      userId: new UUID("eeb16fff-14eb-4ef5-8b5a-eeb16fff3312"),
+      user: 'root',
+      db: 'admin',
+      roles: [ { role: 'root', db: 'admin' } ],
+      mechanisms: [ 'SCRAM-SHA-1', 'SCRAM-SHA-256' ]
+    }
+  ],
+  ok: 1
+}
 ```
 
 ### enable security

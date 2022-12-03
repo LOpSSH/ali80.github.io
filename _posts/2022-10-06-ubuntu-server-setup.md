@@ -293,6 +293,7 @@ cat /proc/sys/vm/swappiness
 ### swap pressure
 cat /proc/sys/vm/vfs_cache_pressure
 
-
+## set time-zon
+sudo timedatectl set-timezon Asia/Tehran
 ## References
 [^1]: And here is the definition...
