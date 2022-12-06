@@ -79,8 +79,7 @@ weakly dowloads: 495,918
 https://github.com/OptimalBits/bull/blob/develop/PATTERNS.md
 https://github.com/OptimalBits/bull/blob/develop/REFERENCE.md
 
-
-## <a href="What is BullMQ">BullMQ</a>
+## <a href="https://docs.bullmq.io/">BullMQ</a>
 BullMQ is a Node.js library that implements a fast and robust queue system built on top of Redis that helps in resolving many modern age micro-services architectures.
 The library is designed so that it will fulfill the following goals:
 - Exactly once queue semantics, i.e., attempts to deliver every message exactly one time, but it will deliver at least once in the worst case scenario*.
