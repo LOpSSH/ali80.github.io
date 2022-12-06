@@ -58,3 +58,10 @@ netstat -plnt
 # OR
 ss -tulpn
 ```
+
+## get disk usage
+```bash
+# ncdu
+sudo apt install ncdu
+sudo ncdu /
+```

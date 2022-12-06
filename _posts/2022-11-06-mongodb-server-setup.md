@@ -90,5 +90,7 @@ db.getUsers()
 uncomment security lines in `mongod.conf` file
 
 ## connecting to db
-> weirdly, connection string should be like this `mongodb://user:pwd@localhost:27017` and not `mongodb://user:pwd@localhost:27017/testDB`
+> weirdly, connection string should be like this `mongodb://user:pwd@localhost:27017` and NOT `mongodb://user:pwd@localhost:27017/testDB`
+{: .prompt-info }
+> for connecting to default database should should also define auth source `mongodb://user:pwd@localhost:27017/testDB?authSource=admin`
 {: .prompt-info }
