@@ -35,7 +35,21 @@ location / {
 {: .prompt-tip }
 you can use it in a subdomain or main domain, have fun.
 
-
+## docker-compose file
+```yaml
+services:
+    nginxpm:
+        container_name: nginxpm
+        image: 'jc21/nginx-proxy-manager:latest'
+        restart: unless-stopped
+        ports:
+        - '80:80'
+        - '81:81'
+        - '443:443'
+        volumes:
+        - ./data:/data
+        - ./letsencrypt:/etc/letsencrypt
+```
 ## add basic auth
 add following to advanced section
 ```bash

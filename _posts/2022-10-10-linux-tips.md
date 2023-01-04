@@ -65,3 +65,16 @@ ss -tulpn
 sudo apt install ncdu
 sudo ncdu /
 ```
+
+## ssh through socks proxy
+```bash
+ssh user@remotehost -o "ProxyCommand=nc -X 5 -x proxyhost:proxyport %h %p"
+```
+
+or add this to `.ssh/config`
+```yml
+Host server_ip
+  HostName server_ip
+  User ali
+  ProxyCommand nc -X 5 -x 127.0.0.1:10808 %h %p
+```
