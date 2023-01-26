@@ -14,7 +14,7 @@ usermod -aG sudo ali # make ali superuser
 sudo apt update
 sudo apt upgrade -y
 sudo apt install nodejs -y
-sudo apt install fail2ban -y
+sudo apt install tmux fail2ban -y
 ```
 
 
@@ -277,15 +277,22 @@ php -S 127.0.0.1:8000
 [ref](https://gist.github.com/willurd/5720255)
 ## enable swap
 ```bash
+# Create a new swap file:
 sudo fallocate -l 2G /swapfile
+# Change the permissions of the file:
 sudo chmod 600 /swapfile
+# Mark the file as swap:
 sudo mkswap /swapfile
+# Enable the swap file:
 sudo swapon /swapfile
 sudo swapon --show
 
 # Make the Swap File Permanent
 sudo cp /etc/fstab /etc/fstab.bak
 echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+
+# Verify that the swap is enabled:
+free -h
 ```
 
 ### configure  swap usage
